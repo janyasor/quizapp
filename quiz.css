@@ -2,6 +2,10 @@ h1 {
     font-family:Garamond;
 }
 
+h2 {
+    text-align: center;
+}
+
 #next {
     margin-left: 300px;
 }

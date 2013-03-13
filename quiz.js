@@ -19,25 +19,28 @@ var allQuestions = [
 $(document).ready(function(){
     answers = new Object();
     $('.option').change(function(){
-        var answer = ($(this).attr('value'))
-        var question = ($(this).attr('name'))
-        answers[question] = answer
-    })
+        var answer = ($(this).attr('value'));
+        var question = ($(this).attr('name'));
+        answers[question] = answer;
+    });
     var item1 = document.getElementById('questions');
 
     var totalQuestions = $('.questions').size();
     var currentQuestion = 0;
-    var totalScore = $("input[type='text'][name='sum']").hide();
+    var totalScore = $("input[type='text'][name='sum']");
     $questions = $('.questions');
     $questions.hide();
+    $totalScore = totalScore;
+    $totalScore.hide();
     $($questions.get(currentQuestion)).fadeIn();
     $('#next').click(function(){
         $($questions.get(currentQuestion)).fadeOut(function(){
             currentQuestion = currentQuestion + 1;
             if(currentQuestion == totalQuestions){
-                var result = sum_values()
-                //do stuff with the result
-                alert(result);
+                $('#next').hide();
+                result = $("#final").val();
+                //do stuff with the result;
+                $('h2').append("Your final score: "+result+' <br/>');
             }else{
                 $($questions.get(currentQuestion)).fadeIn();
             }
@@ -47,18 +50,17 @@ $(document).ready(function(){
 });
 
 
-function calcscore(){
+function calcScore(){
     var score = 0;
     $(".option:checked").each(function(){
         score+=parseInt($(this).val(),"value");
     });
-    $("input[name=sum]").val(score)
+    $("input[name=sum]").val(score);
+
 }
+
 $().ready(function(){
     $(".option").change(function(){
-        calcscore()
+        calcScore();
     });
 });
-
-
-
