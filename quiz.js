@@ -23,7 +23,6 @@ $(document).ready(function(){
         var question = ($(this).attr('name'));
         answers[question] = answer;
     });
-    var item1 = document.getElementById('questions');
 
     var totalQuestions = $('.questions').size();
     var currentQuestion = 0;
