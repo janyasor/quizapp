@@ -37,14 +37,25 @@ $(document).ready(function(){
             currentQuestion = currentQuestion + 1;
             if(currentQuestion == totalQuestions){
                 $('#next').hide();
+                $('#back').hide();
                 result = $("#final").val();
-                //do stuff with the result;
+                //Takes total points and assigns it to the result;
                 $('h2').append("Your final score: "+result+' <br/>');
             }else{
                 $($questions.get(currentQuestion)).fadeIn();
             }
         });
 
+    });
+    $('#back').click(function(){
+        $($questions.get(currentQuestion)).fadeIn(function(){
+            currentQuestion = currentQuestion - 1;
+            if(currentQuestion == 0){
+                $('#back').hide();
+            }else{
+                $($questions.get(currentQuestion)).fadeOut();
+            }
+    });
     });
 });
 
