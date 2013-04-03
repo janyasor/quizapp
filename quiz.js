@@ -31,12 +31,15 @@ $(document).ready(function(){
     $questions.hide();
     $totalScore = totalScore;
     $totalScore.hide();
+    $('#back').hide();
     $($questions.get(currentQuestion)).fadeIn();
     $('#next').click(function(){
         $($questions.get(currentQuestion)).fadeOut(function(){
             currentQuestion = currentQuestion + 1;
+            $('#back').show();
             if(currentQuestion == totalQuestions){
                 $('#next').hide();
+                $('#back').hide();
                 result = $("#final").val();
                 //Takes total points and assigns it to the result;
                 $('h2').append("Your final score: "+result+' <br/>');
@@ -51,6 +54,9 @@ $(document).ready(function(){
             $($questions.get(currentQuestion)).hide();
             currentQuestion = currentQuestion - 1;
             $($questions.get(currentQuestion)).fadeIn();
+            if (currentQuestion == 0) {
+                $('#back').hide();
+            }
 
         });
     });
