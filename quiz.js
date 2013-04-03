@@ -37,7 +37,6 @@ $(document).ready(function(){
             currentQuestion = currentQuestion + 1;
             if(currentQuestion == totalQuestions){
                 $('#next').hide();
-                $('#back').hide();
                 result = $("#final").val();
                 //Takes total points and assigns it to the result;
                 $('h2').append("Your final score: "+result+' <br/>');
@@ -49,13 +48,11 @@ $(document).ready(function(){
     });
     $('#back').click(function(){
         $($questions.get(currentQuestion)).fadeIn(function(){
+            $($questions.get(currentQuestion)).hide();
             currentQuestion = currentQuestion - 1;
-            if(currentQuestion == 0){
-                $('#back').hide();
-            }else{
-                $($questions.get(currentQuestion)).fadeOut();
-            }
-    });
+            $($questions.get(currentQuestion)).fadeIn();
+
+        });
     });
 });
 
